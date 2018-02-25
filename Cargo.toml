@@ -1,0 +1,10 @@
+[package]
+name = "capitalp"
+version = "0.1.0"
+authors = ["Gennady Kovshenin <gennady@kovshenin.com>"]
+
+[dependencies]
+reqwest = "0.8.5"
+serde = "1.0.27"
+serde_derive = "1.0.27"
+serde_json = "1.0.9"
