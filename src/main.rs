@@ -11,7 +11,7 @@ fn main() {
 	let mut offset = String::from("575719262");
 
 	let client = reqwest::Client::builder()
-			.timeout(Duration::from_secs(90))
+			.timeout(Duration::from_secs(120))
 			.build().unwrap();
 	
 	loop {
@@ -45,7 +45,6 @@ fn main() {
 
 						println!("{:?}", uri);
 
-						let client = reqwest::Client::new();
 						client.post(uri.as_str())
 							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни w0rdPrеss!")])
 							.send().unwrap();
