@@ -8,10 +8,10 @@ fn main() {
 	let botkey = "botKEYHERE";
 	let apiurl = "https://api.telegram.org";
 
-	let mut offset = String::from("575719262");
+	let mut offset = String::from("575719478");
 
 	let client = reqwest::Client::builder()
-			.timeout(Duration::from_secs(120))
+			.timeout(Duration::from_secs(90))
 			.build().unwrap();
 	
 	loop {
@@ -20,9 +20,15 @@ fn main() {
 
 		println!("Requesting {:?}", uri);
 
-		let update: Value = client.get(uri.as_str())
-			.send().unwrap()
-			.json().unwrap();
+		let mut response = match client.get(uri.as_str()).send() {
+			Ok(response) => response,
+			Err(e) => {
+				println!("Error {:?}", e);
+				continue
+			}
+		};
+
+		let update: Value = response.json().unwrap();
 
 		for result in update["result"].as_array().unwrap() {
 			offset = String::from((result["update_id"].as_u64().unwrap() + 1).to_string());
@@ -47,7 +53,7 @@ fn main() {
 
 						client.post(uri.as_str())
 							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни w0rdPrеss!")])
-							.send().unwrap();
+							.send();
 				}
 			}
 		}
