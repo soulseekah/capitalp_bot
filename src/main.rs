@@ -10,7 +10,7 @@ fn main() {
 	let botkey = "botKEYHERE";
 	let apiurl = "https://api.telegram.org";
 
-	let mut offset = String::from("575719649");
+	let mut offset = String::from("575721982");
 
 	let client = reqwest::Client::builder()
 			.timeout(Duration::from_secs(90))
@@ -71,6 +71,11 @@ fn capital_p_dangit(text: &str) -> bool {
 		return capital_p_dangit(_text.as_str());
 	}
 
+	if text.to_lowercase().contains("вротпрес" )
+		|| text.to_lowercase().contains("вордпрес" ) {
+			return true;
+	}
+
 	if text.to_lowercase().contains("wordpress.org") || text.to_lowercase().contains("wordpress.com") {
 		return capital_p_dangit(text.to_lowercase().replace("wordpress.org", "").replace("wordpress.com", "").as_str());
 	}
@@ -89,5 +94,7 @@ fn test_capital_p_dangit() {
 	assert!(false == capital_p_dangit("wordpress.com"));
 	assert!(false == capital_p_dangit("check out https://someothersite.com/wordpress/hello"));
 	assert!(true == capital_p_dangit("check out https://wordpress.org Wordpress"));
+	assert!(true== capital_p_dangit("вротпресс"));
+	assert!(true== capital_p_dangit("вордпрес"));
 }
 						
