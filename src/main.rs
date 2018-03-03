@@ -10,7 +10,7 @@ fn main() {
 	let botkey = "botKEYHERE";
 	let apiurl = "https://api.telegram.org";
 
-	let mut offset = String::from("575721982");
+	let mut offset = String::from("575723650");
 
 	let client = reqwest::Client::builder()
 			.timeout(Duration::from_secs(90))
@@ -50,7 +50,7 @@ fn main() {
 						println!("{:?}", uri);
 
 						client.post(uri.as_str())
-							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни w0rdPrеss!")])
+							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни вротпресс!")])
 							.send();
 				}
 			}
@@ -71,13 +71,12 @@ fn capital_p_dangit(text: &str) -> bool {
 		return capital_p_dangit(_text.as_str());
 	}
 
-	if text.to_lowercase().contains("вротпрес" )
-		|| text.to_lowercase().contains("вордпрес" ) {
-			return true;
-	}
-
 	if text.to_lowercase().contains("wordpress.org") || text.to_lowercase().contains("wordpress.com") {
 		return capital_p_dangit(text.to_lowercase().replace("wordpress.org", "").replace("wordpress.com", "").as_str());
+	}
+
+	if text.to_lowercase().contains("wordpress.tv") {
+		return capital_p_dangit(text.to_lowercase().replace("wordpress.tv", "").as_str());
 	}
 
 	text.to_lowercase().contains("wordpress") && ! text.contains("WordPress")
@@ -91,10 +90,9 @@ fn test_capital_p_dangit() {
 	assert!(false == capital_p_dangit("WordPress"));
 	assert!(false == capital_p_dangit("wordpress WordPress"));
 	assert!(false == capital_p_dangit("wordpress.org"));
+	assert!(false == capital_p_dangit("come to wordpress.tv"));
 	assert!(false == capital_p_dangit("wordpress.com"));
 	assert!(false == capital_p_dangit("check out https://someothersite.com/wordpress/hello"));
 	assert!(true == capital_p_dangit("check out https://wordpress.org Wordpress"));
-	assert!(true== capital_p_dangit("вротпресс"));
-	assert!(true== capital_p_dangit("вордпрес"));
 }
 						
