@@ -30,7 +30,13 @@ fn main() {
 			}
 		};
 
-		let update: Value = response.json().unwrap();
+		let update: Value = match response.json() {
+			Ok(update) => update,
+			Err(e) => {
+				println!("Error {:?}", e);
+				continue
+			}
+		};
 
 		for result in update["result"].as_array().unwrap() {
 			offset = String::from((result["update_id"].as_u64().unwrap() + 1).to_string());
