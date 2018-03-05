@@ -6,10 +6,9 @@ Born in and proud citizen of [the bestsest Russian WordPress Telegram chat](http
 
 ![WordPress](https://raw.githubusercontent.com/soulseekah/capitalp_bot/master/screenshot.png)
 
-## Build
+## Running
 
-1. Set your Telegram Bot API key in main.rs.
-1. `cargo run`
+1. `<BOTKEY=your_secret_bot_key> [OFFSET=message_id_offset] cargo run`
 
 ## [@capitalp_bot](https://web.telegram.org/#/im?p=@capitalp_bot) is operating at
 
