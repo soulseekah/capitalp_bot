@@ -94,6 +94,10 @@ fn capital_p_dangit(text: &str) -> bool {
 		return capital_p_dangit(text.to_lowercase().replace("wordpress.org", "").replace("wordpress.com", "").as_str());
 	}
 
+	if text.to_lowercase().contains("@wordpress") {
+		return capital_p_dangit(text.to_lowercase().replace("@wordpress", "").as_str());
+	}
+
 	if text.to_lowercase().contains("wordpress.tv") {
 		return capital_p_dangit(text.to_lowercase().replace("wordpress.tv", "").as_str());
 	}
