@@ -69,7 +69,7 @@ fn main() {
 						println!("{:?}", uri);
 
 						client.post(uri.as_str())
-							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни вротпресс!")])
+							.form(&[("text", "*WordPress*. Не Wordpress, не wordpress, не вротпресс!")])
 							.send();
 				}
 			}
