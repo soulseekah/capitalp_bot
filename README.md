@@ -2,7 +2,7 @@
 
 A quick and dirty looped heckler that corrects the spelling of WordPress. A pedantic troll doing God's work.
 
-Born in and proud citizen of [the bestsest Russian WordPress Telegram chat](https://t.me/c_wordpress).
+Born in and proud citizen of [the bestest Russian WordPress Telegram chat](https://t.me/c_wordpress).
 
 ![WordPress](https://raw.githubusercontent.com/soulseekah/capitalp_bot/master/screenshot.png)
 
