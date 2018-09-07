@@ -28,7 +28,7 @@ fn main() {
 	let client = reqwest::Client::builder()
 			.timeout(Duration::from_secs(90))
 			.build().unwrap();
-	
+
 	loop {
 		let action = ["getUpdates?timeout=90&", ["offset=", offset.as_str()].join("").as_str()].join("");
 		let uri = [apiurl, botkey.as_str(), action.as_str()].join("/");
@@ -69,7 +69,7 @@ fn main() {
 						println!("{:?}", uri);
 
 						client.post(uri.as_str())
-							.form(&[("text", "*WordPress*. Не Wordpress, не wordpress, не вротпресс!")])
+							.form(&[("text", "*WordPress*. Ни Wordpress, ни wordpress, ни вротпресс!")])
 							.send();
 				}
 			}
@@ -118,4 +118,4 @@ fn test_capital_p_dangit() {
 	assert!(false == capital_p_dangit("check out https://someothersite.com/wordpress/hello"));
 	assert!(true == capital_p_dangit("check out https://wordpress.org Wordpress"));
 }
-						
+
